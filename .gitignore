@@ -1,0 +1,11 @@
+# Real financial data stays on your machine
+private/
+runs/
+workbook/
+*.csv
+!tests/fixtures/*.csv
+~$*.xlsx
+
+.venv/
+__pycache__/
+.pytest_cache/

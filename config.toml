@@ -1,0 +1,26 @@
+# dbs-finance settings. Paths use forward slashes; ~ is your home folder.
+
+# Your working copy. Created from template/ on the first run, never committed.
+workbook = "workbook/expense_tracker.xlsx"
+# Where DBS exports land. Any transaction_history_*.csv not imported before is picked up.
+downloads_glob = "~/Downloads/transaction_history_*.csv"
+
+[claude]
+# Claude Code CLI on your Claude subscription. Run `claude auth login` once first.
+# On Windows, give the full path to claude.cmd if `claude` is not on PATH.
+command = "claude"
+model = "opus"
+batch = 60          # merchants per request
+
+[scrub]
+# Free-text PayNow memos can contain names or personal notes. false = never sent.
+send_memos = false
+
+# Your own categorising preferences, sent to Claude as written. Edit freely.
+[rules]
+notes = [
+  "Spending at a merchant outside Singapore (country code other than SGP) is travel.",
+  "PayNow TO a private person (PERSON_nn) cannot be identified from the bank text: answer unknown unless the amount pattern makes it obvious.",
+  "Money received FROM a private person (PayNow from PERSON_nn, or a bank transfer in) is transfer_in, medium confidence.",
+  "Answer unknown rather than guess. Use low confidence when unsure.",
+]
